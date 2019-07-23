@@ -1,4 +1,3 @@
-"use strict";
 function Greeter(greeting) {
     this.greeting = greeting;
 }
@@ -93,3 +92,30 @@ var myself = {
 };
 myself.bankAccount.deposit(3000);
 console.log(myself);
+var myName = 'Mihai';
+var myAge = 32;
+//myName = 32;
+var anyVar;
+anyVar = 24;
+function controlMe(isTrue) {
+    var result;
+    if (isTrue) {
+        result = 12;
+    }
+    result = 32;
+    return result;
+}
+console.log(controlMe(true));
+console.log('Arrow functions:');
+var addNumbers = function (number1, number2) {
+    return number1 + number2;
+};
+console.log(addNumbers(5, 3));
+var multiplyNumbers = function (number1, number2) { return number1 * number2; };
+console.log(multiplyNumbers(8, 7));
+var great = function () {
+    console.log('Hello!');
+};
+great();
+var greatFriend = function (friend) { return console.log(friend); };
+greatFriend('Bogdan');

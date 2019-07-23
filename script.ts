@@ -126,3 +126,43 @@ let myself: {name: string, bankAccount: BankAccount, hobbies: string[]} = {
 
 myself.bankAccount.deposit(3000);
 console.log(myself);
+
+let myName: string = 'Mihai';
+let myAge: number = 32
+//myName = 32;
+
+let anyVar;
+anyVar = 24;
+
+function controlMe(isTrue: Boolean) {
+  let result: number;
+  if (isTrue) {
+    result = 12;
+  }
+  result = 32;
+  return result;
+}
+
+console.log(controlMe(true));
+
+console.log('Arrow functions:');
+
+const addNumbers = function(number1: number, number2: number): number {
+  return number1 + number2;
+}
+
+console.log(addNumbers(5, 3));
+
+const multiplyNumbers = (number1: number, number2: number): number => number1 * number2;
+
+console.log(multiplyNumbers(8, 7));
+
+const great = (): void => {
+  console.log('Hello!');
+};
+
+great();
+
+const greatFriend = friend => console.log(friend);
+
+greatFriend('Bogdan');
