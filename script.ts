@@ -166,3 +166,78 @@ great();
 const greatFriend = friend => console.log(friend);
 
 greatFriend('Bogdan');
+
+console.log('Default params');
+
+const countDown = (start: number = 10, end = start - 5): void => {
+  console.log(start, end);
+  while (start > 0) {
+    start--;
+  }
+  console.log('Done!', start, end);
+};
+
+countDown();
+
+console.log('Rest and Spread');
+
+const numbers = [3, 17, 86, -7, 7, 2];
+console.log(Math.max(3, 17, 86, -7, 7, 2));
+console.log(Math.max(...numbers));
+
+function createList(...args: number[]) {
+  return args;
+}
+console.log(createList(1, 3, 5));
+
+function createAnotherList(message: string, ...args: number[]) {
+  console.log(message);
+  return args;
+}
+console.log(createAnotherList('Hi!', 1, 3, 5));
+
+function displayData(name: string, age: number) {
+  console.log('My name is ' + name + ' and I am ' + age + ' years old!');
+}
+
+displayData('Mihai', 32);
+
+function displayDataAgain(...data: [string, number]) {
+  console.log('My name is %c' + data[0] + '%c and I am ' + data[1] + ' years old!', 'font-weight: 900', 'font-weight: 300');
+}
+
+displayDataAgain('Mihai', 32);
+
+console.log('%cDestructuring', 'color: #ff0000; font-weight: bolder');
+
+const myList = ['Run', 'Eat', 'Sleep'];
+console.log(myList[0], myList[1], myList[2]);
+const [item1, item2, item3] = myList;
+console.log(item1, item2, item3);
+
+const personDet = {
+  persName: 'Mihai',
+  age: 32
+};
+
+const personDetAgain = {
+  persNameReal: 'Mihai S.',
+  ageReal: 33
+};
+
+const {persName, age} = personDet;
+console.log(persName, 'is', age, 'years old!');
+
+const {persNameReal: myRealName, ageReal: myRealA} = personDetAgain;
+console.log(myRealName, 'is', myRealA, 'years old!');
+
+console.log('Template literals');
+
+const userFirstName = 'Mihai';
+const userLastName = 'Sitaru';
+const greeting = 'Hello, I\'m ' + userFirstName;
+const greeting2 = `Hello 
+I\'m ${userFirstName}
+${userLastName}.`;
+console.log(greeting);
+console.log(greeting2);
