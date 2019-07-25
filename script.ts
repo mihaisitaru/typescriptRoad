@@ -1,47 +1,47 @@
 function Greeter(greeting: string) {
-    this.greeting = greeting;
-  }
-  
-  Greeter.prototype.greet = function() {
-    return "Hello, " + this.greeting;
-  };
-  
-  let greeter = new Greeter("world");
-  
-  let button = document.createElement("button");
-  button.textContent = "Say Hello";
-  button.onclick = function() {
-    alert(greeter.greet());
-  };
-  
-  document.body.appendChild(button);
+  this.greeting = greeting;
+}
 
-  let hasHobbies: boolean = false;
+Greeter.prototype.greet = function() {
+  return 'Hello, ' + this.greeting;
+};
 
-  let myRealAge: number;
-  myRealAge = 32;
+let greeter = new Greeter('world');
 
-  let hobbies: any[] = ["Running", "Reading"];
-  hobbies = [100];
-  console.log(hobbies);
-  
-  let address: [number, string] = [52, "FakeStreet"];
-  enum Color {
-    Blue,
-    Yellow = 15,
-    Red = 2
-  }
+let button = document.createElement('button');
+button.textContent = 'Say Hello';
+button.onclick = function() {
+  alert(greeter.greet());
+};
 
-  let myColor: Color = Color.Blue;
-  let newColor: Color = Color.Red + 1;
-  console.log(myColor); //0
-  console.log(newColor);
+document.body.appendChild(button);
 
-  let house: any = 'loft';
-  console.log(house);
-  house = {type: 'appartment', rooms: 3};
-  console.log(house);
-  
+let hasHobbies: boolean = false;
+
+let myRealAge: number;
+myRealAge = 32;
+
+let hobbies: any[] = ['Running', 'Reading'];
+hobbies = [100];
+console.log(hobbies);
+
+let address: [number, string] = [52, 'FakeStreet'];
+enum Color {
+  Blue,
+  Yellow = 15,
+  Red = 2
+}
+
+let myColor: Color = Color.Blue;
+let newColor: Color = Color.Red + 1;
+console.log(myColor); //0
+console.log(newColor);
+
+let house: any = 'loft';
+console.log(house);
+house = { type: 'appartment', rooms: 3 };
+console.log(house);
+
 function returnMyAge(): number {
   return myRealAge;
 }
@@ -65,7 +65,7 @@ let newMultiply: (val1: number, val2: number) => number;
 newMultiply = multiply;
 console.log(newMultiply(5, 6));
 
-let userData: {name: string, age: number} = {
+let userData: { name: string; age: number } = {
   name: 'Mihai',
   age: 32
 };
@@ -77,11 +77,11 @@ console.log(userData);
 //   b: 45
 // };
 
-type ComplexObj = {data: number[], output: (all: boolean) => number[]};
+type ComplexObj = { data: number[]; output: (all: boolean) => number[] };
 
 let complexObj: ComplexObj = {
   data: [5, 7, 9],
-  output: function (all: boolean): number[] {
+  output: function(all: boolean): number[] {
     return this.data;
   }
 };
@@ -97,7 +97,10 @@ let anotherVar = 'anything';
 if (typeof anotherVar == 'number') {
   console.log('anotherVar is of type number');
 } else {
-  console.log('anotherVar is not of type number, but of type: ', typeof anotherVar);
+  console.log(
+    'anotherVar is not of type number, but of type: ',
+    typeof anotherVar
+  );
 }
 
 function neverSayNever(): never {
@@ -109,7 +112,7 @@ canBeNull = null;
 let canAlsoBeNull;
 canAlsoBeNull = null;
 
-type BankAccount = {money: number, deposit: (a: number) => void};
+type BankAccount = { money: number; deposit: (a: number) => void };
 
 let bankAccount: BankAccount = {
   money: 2000,
@@ -118,7 +121,7 @@ let bankAccount: BankAccount = {
   }
 };
 
-let myself: {name: string, bankAccount: BankAccount, hobbies: string[]} = {
+let myself: { name: string; bankAccount: BankAccount; hobbies: string[] } = {
   name: 'Mihai',
   bankAccount: bankAccount,
   hobbies: ['Running', 'Reading']
@@ -128,7 +131,7 @@ myself.bankAccount.deposit(3000);
 console.log(myself);
 
 let myName: string = 'Mihai';
-let myAge: number = 32
+let myAge: number = 32;
 //myName = 32;
 
 let anyVar;
@@ -149,11 +152,12 @@ console.log('Arrow functions:');
 
 const addNumbers = function(number1: number, number2: number): number {
   return number1 + number2;
-}
+};
 
 console.log(addNumbers(5, 3));
 
-const multiplyNumbers = (number1: number, number2: number): number => number1 * number2;
+const multiplyNumbers = (number1: number, number2: number): number =>
+  number1 * number2;
 
 console.log(multiplyNumbers(8, 7));
 
@@ -203,7 +207,11 @@ function displayData(name: string, age: number) {
 displayData('Mihai', 32);
 
 function displayDataAgain(...data: [string, number]) {
-  console.log('My name is %c' + data[0] + '%c and I am ' + data[1] + ' years old!', 'font-weight: 900', 'font-weight: 300');
+  console.log(
+    'My name is %c' + data[0] + '%c and I am ' + data[1] + ' years old!',
+    'font-weight: 900',
+    'font-weight: 300'
+  );
 }
 
 displayDataAgain('Mihai', 32);
@@ -225,10 +233,10 @@ const personDetAgain = {
   ageReal: 33
 };
 
-const {persName, age} = personDet;
+const { persName, age } = personDet;
 console.log(persName, 'is', age, 'years old!');
 
-const {persNameReal: myRealName, ageReal: myRealA} = personDetAgain;
+const { persNameReal: myRealName, ageReal: myRealA } = personDetAgain;
 console.log(myRealName, 'is', myRealA, 'years old!');
 
 console.log('Template literals');
@@ -241,3 +249,80 @@ I\'m ${userFirstName}
 ${userLastName}.`;
 console.log(greeting);
 console.log(greeting2);
+
+console.log('%cSection 4 - exercises', 'color: rgb(152, 88, 22)');
+
+//1 - Arrow function
+const double = (value: number): number => value * 2;
+console.log(double(10));
+
+//2 - Default param
+const greet2 = function(name: string = 'Max'): void {
+  console.log('Hello ' + name);
+};
+
+greet2();
+greet2('Anna');
+
+//3 - spread operator
+const nr = [-3, 33, 38, 5];
+console.log(Math.min(...nr));
+
+//4 - spread operator 2
+const newArray = [55, 20];
+newArray.push(...nr);
+console.log(newArray);
+
+//5 - destructuring array
+const testResults = [3.89, 2.99, 1.38];
+const [result1, result2, result3] = testResults;
+console.log(result1, result2, result3);
+
+//6 - destructuring object
+const scientist = {
+  firstName: 'Will',
+  experience: 12
+};
+
+const { firstName: scientistName, experience: exp } = scientist;
+console.log(scientistName, exp);
+
+console.log('%cSection 5 - Using classes to create objects', 'color: rgb(152, 88, 22)');
+
+class Person {
+  name: string;
+  private type: string;
+  protected age: number = 32;
+  constructor(name: string, public username: string) {
+    this.name = name;
+  }
+
+  printAge() {
+    console.log(this.age);
+    this.setType('old person');
+  }
+  
+  private setType(type: string) {
+    this.type = type;
+    console.log(this.type);
+  }
+}
+
+const person = new Person('Mihai', 'mihai.sitaru');
+console.log(person);
+console.log(person.name, person.username);
+const {name: personName, username: user} = person;
+console.log(personName, user);
+person.printAge();
+
+class Mihai extends Person {
+  //name = 'Mihai';
+
+  constructor(username: string) {
+    super('MihaiS', username);
+    this.age = 33;
+  }
+}
+
+const mihai = new Mihai('mihaiSS');
+console.log(mihai);

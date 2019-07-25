@@ -1,12 +1,25 @@
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 function Greeter(greeting) {
     this.greeting = greeting;
 }
 Greeter.prototype.greet = function () {
-    return "Hello, " + this.greeting;
+    return 'Hello, ' + this.greeting;
 };
-var greeter = new Greeter("world");
-var button = document.createElement("button");
-button.textContent = "Say Hello";
+var greeter = new Greeter('world');
+var button = document.createElement('button');
+button.textContent = 'Say Hello';
 button.onclick = function () {
     alert(greeter.greet());
 };
@@ -14,10 +27,10 @@ document.body.appendChild(button);
 var hasHobbies = false;
 var myRealAge;
 myRealAge = 32;
-var hobbies = ["Running", "Reading"];
+var hobbies = ['Running', 'Reading'];
 hobbies = [100];
 console.log(hobbies);
-var address = [52, "FakeStreet"];
+var address = [52, 'FakeStreet'];
 var Color;
 (function (Color) {
     Color[Color["Blue"] = 0] = "Blue";
@@ -111,7 +124,9 @@ var addNumbers = function (number1, number2) {
     return number1 + number2;
 };
 console.log(addNumbers(5, 3));
-var multiplyNumbers = function (number1, number2) { return number1 * number2; };
+var multiplyNumbers = function (number1, number2) {
+    return number1 * number2;
+};
 console.log(multiplyNumbers(8, 7));
 var great = function () {
     console.log('Hello!');
@@ -187,3 +202,67 @@ var greeting = 'Hello, I\'m ' + userFirstName;
 var greeting2 = "Hello \nI'm " + userFirstName + "\n" + userLastName + ".";
 console.log(greeting);
 console.log(greeting2);
+console.log('%cSection 4 - exercises', 'color: rgb(152, 88, 22)');
+//1 - Arrow function
+var double = function (value) { return value * 2; };
+console.log(double(10));
+//2 - Default param
+var greet2 = function (name) {
+    if (name === void 0) { name = 'Max'; }
+    console.log('Hello ' + name);
+};
+greet2();
+greet2('Anna');
+//3 - spread operator
+var nr = [-3, 33, 38, 5];
+console.log(Math.min.apply(Math, nr));
+//4 - spread operator 2
+var newArray = [55, 20];
+newArray.push.apply(newArray, nr);
+console.log(newArray);
+//5 - destructuring array
+var testResults = [3.89, 2.99, 1.38];
+var result1 = testResults[0], result2 = testResults[1], result3 = testResults[2];
+console.log(result1, result2, result3);
+//6 - destructuring object
+var scientist = {
+    firstName: 'Will',
+    experience: 12
+};
+var scientistName = scientist.firstName, exp = scientist.experience;
+console.log(scientistName, exp);
+console.log('%cSection 5 - Using classes to create objects', 'color: rgb(152, 88, 22)');
+var Person = /** @class */ (function () {
+    function Person(name, username) {
+        this.username = username;
+        this.age = 32;
+        this.name = name;
+    }
+    Person.prototype.printAge = function () {
+        console.log(this.age);
+        this.setType('old person');
+    };
+    Person.prototype.setType = function (type) {
+        this.type = type;
+        console.log(this.type);
+    };
+    return Person;
+}());
+var person = new Person('Mihai', 'mihai.sitaru');
+console.log(person);
+console.log(person.name, person.username);
+var personName = person.name, user = person.username;
+console.log(personName, user);
+person.printAge();
+var Mihai = /** @class */ (function (_super) {
+    __extends(Mihai, _super);
+    //name = 'Mihai';
+    function Mihai(username) {
+        var _this = _super.call(this, 'MihaiS', username) || this;
+        _this.age = 33;
+        return _this;
+    }
+    return Mihai;
+}(Person));
+var mihai = new Mihai('mihaiSS');
+console.log(mihai);
