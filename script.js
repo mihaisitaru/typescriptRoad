@@ -266,3 +266,144 @@ var Mihai = /** @class */ (function (_super) {
 }(Person));
 var mihai = new Mihai('mihaiSS');
 console.log(mihai);
+var Plant = /** @class */ (function () {
+    function Plant() {
+        this._species = 'Default';
+    }
+    Object.defineProperty(Plant.prototype, "species", {
+        get: function () {
+            return this._species;
+        },
+        set: function (value) {
+            this._species = value.length > 3 ? value : 'Default';
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Plant;
+}());
+var plant = new Plant();
+console.log(plant.species);
+plant.species = 'ABC';
+console.log(plant.species);
+plant.species = 'Wonderful Plant';
+console.log(plant.species);
+var Helpers = /** @class */ (function () {
+    function Helpers() {
+    }
+    Helpers.calcCircumference = function (diameter) {
+        return this.PI * diameter;
+    };
+    Helpers.PI = 3.14;
+    return Helpers;
+}());
+console.log(2 * Helpers.PI);
+console.log(Helpers.calcCircumference(21));
+var Project = /** @class */ (function () {
+    function Project() {
+        this.projectName = 'Default';
+        this.budget = 1000;
+    }
+    Project.prototype.calcBudget = function () {
+        return this.budget * 2;
+    };
+    return Project;
+}());
+var ITProject = /** @class */ (function (_super) {
+    __extends(ITProject, _super);
+    function ITProject() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    ITProject.prototype.changeName = function (name) {
+        this.projectName = name;
+    };
+    return ITProject;
+}(Project));
+var newProject = new ITProject();
+console.log(newProject);
+newProject.changeName('Test project');
+console.log(newProject);
+var OnlyOne = /** @class */ (function () {
+    function OnlyOne(name) {
+        this.name = name;
+    }
+    OnlyOne.getInstance = function () {
+        if (!OnlyOne.instance) {
+            OnlyOne.instance = new OnlyOne('The Only One');
+        }
+        return OnlyOne.instance;
+    };
+    return OnlyOne;
+}());
+//const wrong = new OnlyOne('The Only One');
+var right = OnlyOne.getInstance();
+console.log(right);
+console.log(right.name);
+//right.name = 'Changed';
+//console.log(right.name);
+//Section 5 - Exercises
+//1 - Class
+var Car = /** @class */ (function () {
+    function Car(name) {
+        this.acceleration = 0;
+        this.name = name;
+    }
+    Car.prototype.honk = function () {
+        console.log('Toooooot');
+    };
+    Car.prototype.accelerate = function (speed) {
+        this.acceleration = this.acceleration + speed;
+    };
+    return Car;
+}());
+var car = new Car('BMW');
+console.log(car.name);
+car.honk();
+console.log(car.acceleration);
+car.accelerate(10);
+console.log(car.acceleration);
+//2 - Inheritance
+var BaseObject = /** @class */ (function () {
+    function BaseObject() {
+        this.width = 0;
+        this.length = 0;
+    }
+    return BaseObject;
+}());
+var Rectangle = /** @class */ (function (_super) {
+    __extends(Rectangle, _super);
+    function Rectangle() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    Rectangle.prototype.calcSize = function () {
+        return this.width * this.length;
+    };
+    return Rectangle;
+}(BaseObject));
+var rectangle = new Rectangle();
+rectangle.width = 50;
+rectangle.length = 2;
+console.log(rectangle.calcSize());
+// 3 - Getters and Setters
+var Pers = /** @class */ (function () {
+    function Pers() {
+        this._firstName = '';
+    }
+    Object.defineProperty(Pers.prototype, "firstName", {
+        get: function () {
+            return this._firstName;
+        },
+        set: function (value) {
+            this._firstName = value.length > 4 ? value : '';
+        },
+        enumerable: true,
+        configurable: true
+    });
+    return Pers;
+}());
+var newPers = new Pers();
+console.log(newPers);
+newPers.firstName = 'Maxi';
+console.log(newPers.firstName);
+newPers.firstName = 'Maximilian';
+console.log(newPers.firstName);

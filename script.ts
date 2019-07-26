@@ -326,3 +326,141 @@ class Mihai extends Person {
 
 const mihai = new Mihai('mihaiSS');
 console.log(mihai);
+
+class Plant {
+  private _species: string = 'Default';
+
+  get species() {
+    return this._species;
+  }
+
+  set species(value: string) {
+    this._species = value.length > 3 ? value: 'Default';
+  }
+}
+
+const plant = new Plant();
+console.log(plant.species);
+plant.species = 'ABC';
+console.log(plant.species);
+plant.species = 'Wonderful Plant';
+console.log(plant.species);
+
+class Helpers {
+  static PI: number = 3.14;
+  static calcCircumference(diameter: number): number {
+    return this.PI * diameter;
+  }
+}
+
+console.log(2 * Helpers.PI);
+console.log(Helpers.calcCircumference(21));
+
+abstract class Project {
+  projectName: string = 'Default';
+  budget: number = 1000;
+
+  abstract changeName(name: string): void;
+
+  calcBudget(): number {
+    return this.budget * 2;
+  }
+}
+
+class ITProject extends Project {
+  changeName(name: string): void {
+    this.projectName = name;
+  }
+}
+
+const newProject = new ITProject();
+console.log(newProject);
+newProject.changeName('Test project');
+console.log(newProject);
+
+class OnlyOne {
+  private static instance: OnlyOne;
+
+  private constructor(public readonly name: string) {}
+
+  static getInstance() {
+    if (!OnlyOne.instance) {
+      OnlyOne.instance = new OnlyOne('The Only One');
+    }
+    return OnlyOne.instance;
+  }
+}
+
+//const wrong = new OnlyOne('The Only One');
+const right = OnlyOne.getInstance();
+console.log(right);
+console.log(right.name);
+//right.name = 'Changed';
+//console.log(right.name);
+
+//Section 5 - Exercises
+
+//1 - Class
+
+class Car {
+  name: string;
+  acceleration: number = 0;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  honk(): void {
+    console.log('Toooooot');
+  }
+
+  accelerate(speed: number):void {
+    this.acceleration = this.acceleration + speed;
+  }
+}
+
+const car = new Car('BMW');
+console.log(car.name);
+car.honk();
+console.log(car.acceleration);
+car.accelerate(10);
+console.log(car.acceleration);
+
+//2 - Inheritance
+
+class BaseObject {
+  width:number = 0;
+  length:number = 0;
+}
+
+class Rectangle extends BaseObject {  
+  calcSize(): number {
+    return this.width * this.length;
+  }
+}
+
+const rectangle = new Rectangle();
+rectangle.width = 50;
+rectangle.length = 2;
+console.log(rectangle.calcSize());
+
+// 3 - Getters and Setters
+
+class Pers {
+  private _firstName: string = '';
+
+  get firstName(): string {
+    return this._firstName;
+  }
+
+  set firstName(value: string) {
+    this._firstName = value.length > 4 ? value : '';
+  }
+}
+
+const newPers = new Pers();
+console.log(newPers);
+newPers.firstName = 'Maxi';
+console.log(newPers.firstName);
+newPers.firstName = 'Maximilian'
+console.log(newPers.firstName);
