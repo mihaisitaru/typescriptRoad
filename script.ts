@@ -3,13 +3,13 @@ function Greeter(greeting: string) {
 }
 
 Greeter.prototype.greet = function() {
-  return 'Hello, ' + this.greeting;
+  return "Hello, " + this.greeting;
 };
 
-let greeter = new Greeter('world');
+let greeter = new Greeter("world");
 
-let button = document.createElement('button');
-button.textContent = 'Say Hello';
+let button = document.createElement("button");
+button.textContent = "Say Hello";
 button.onclick = function() {
   alert(greeter.greet());
 };
@@ -21,11 +21,11 @@ let hasHobbies: boolean = false;
 let myRealAge: number;
 myRealAge = 32;
 
-let hobbies: any[] = ['Running', 'Reading'];
+let hobbies: any[] = ["Running", "Reading"];
 hobbies = [100];
 console.log(hobbies);
 
-let address: [number, string] = [52, 'FakeStreet'];
+let address: [number, string] = [52, "FakeStreet"];
 enum Color {
   Blue,
   Yellow = 15,
@@ -37,9 +37,9 @@ let newColor: Color = Color.Red + 1;
 console.log(myColor); //0
 console.log(newColor);
 
-let house: any = 'loft';
+let house: any = "loft";
 console.log(house);
-house = { type: 'appartment', rooms: 3 };
+house = { type: "appartment", rooms: 3 };
 console.log(house);
 
 function returnMyAge(): number {
@@ -49,7 +49,7 @@ function returnMyAge(): number {
 console.log(returnMyAge());
 
 function sayHi(): void {
-  console.log('Hi there!');
+  console.log("Hi there!");
   //return myRealAge;
 }
 
@@ -66,7 +66,7 @@ newMultiply = multiply;
 console.log(newMultiply(5, 6));
 
 let userData: { name: string; age: number } = {
-  name: 'Mihai',
+  name: "Mihai",
   age: 32
 };
 
@@ -90,21 +90,21 @@ console.log(complexObj);
 // union types
 
 let myRealRealAge: number | string = 32;
-myRealRealAge = '33';
+myRealRealAge = "33";
 // myRealRealAge = true;
 
-let anotherVar = 'anything';
-if (typeof anotherVar == 'number') {
-  console.log('anotherVar is of type number');
+let anotherVar = "anything";
+if (typeof anotherVar == "number") {
+  console.log("anotherVar is of type number");
 } else {
   console.log(
-    'anotherVar is not of type number, but of type: ',
+    "anotherVar is not of type number, but of type: ",
     typeof anotherVar
   );
 }
 
 function neverSayNever(): never {
-  throw new Error('Error!');
+  throw new Error("Error!");
 }
 
 let canBeNull: number | null = 12;
@@ -122,15 +122,15 @@ let bankAccount: BankAccount = {
 };
 
 let myself: { name: string; bankAccount: BankAccount; hobbies: string[] } = {
-  name: 'Mihai',
+  name: "Mihai",
   bankAccount: bankAccount,
-  hobbies: ['Running', 'Reading']
+  hobbies: ["Running", "Reading"]
 };
 
 myself.bankAccount.deposit(3000);
 console.log(myself);
 
-let myName: string = 'Mihai';
+let myName: string = "Mihai";
 let myAge: number = 32;
 //myName = 32;
 
@@ -148,7 +148,7 @@ function controlMe(isTrue: Boolean) {
 
 console.log(controlMe(true));
 
-console.log('Arrow functions:');
+console.log("Arrow functions:");
 
 const addNumbers = function(number1: number, number2: number): number {
   return number1 + number2;
@@ -162,28 +162,28 @@ const multiplyNumbers = (number1: number, number2: number): number =>
 console.log(multiplyNumbers(8, 7));
 
 const great = (): void => {
-  console.log('Hello!');
+  console.log("Hello!");
 };
 
 great();
 
 const greatFriend = friend => console.log(friend);
 
-greatFriend('Bogdan');
+greatFriend("Bogdan");
 
-console.log('Default params');
+console.log("Default params");
 
 const countDown = (start: number = 10, end = start - 5): void => {
   console.log(start, end);
   while (start > 0) {
     start--;
   }
-  console.log('Done!', start, end);
+  console.log("Done!", start, end);
 };
 
 countDown();
 
-console.log('Rest and Spread');
+console.log("Rest and Spread");
 
 const numbers = [3, 17, 86, -7, 7, 2];
 console.log(Math.max(3, 17, 86, -7, 7, 2));
@@ -198,71 +198,71 @@ function createAnotherList(message: string, ...args: number[]) {
   console.log(message);
   return args;
 }
-console.log(createAnotherList('Hi!', 1, 3, 5));
+console.log(createAnotherList("Hi!", 1, 3, 5));
 
 function displayData(name: string, age: number) {
-  console.log('My name is ' + name + ' and I am ' + age + ' years old!');
+  console.log("My name is " + name + " and I am " + age + " years old!");
 }
 
-displayData('Mihai', 32);
+displayData("Mihai", 32);
 
 function displayDataAgain(...data: [string, number]) {
   console.log(
-    'My name is %c' + data[0] + '%c and I am ' + data[1] + ' years old!',
-    'font-weight: 900',
-    'font-weight: 300'
+    "My name is %c" + data[0] + "%c and I am " + data[1] + " years old!",
+    "font-weight: 900",
+    "font-weight: 300"
   );
 }
 
-displayDataAgain('Mihai', 32);
+displayDataAgain("Mihai", 32);
 
-console.log('%cDestructuring', 'color: #ff0000; font-weight: bolder');
+console.log("%cDestructuring", "color: #ff0000; font-weight: bolder");
 
-const myList = ['Run', 'Eat', 'Sleep'];
+const myList = ["Run", "Eat", "Sleep"];
 console.log(myList[0], myList[1], myList[2]);
 const [item1, item2, item3] = myList;
 console.log(item1, item2, item3);
 
 const personDet = {
-  persName: 'Mihai',
+  persName: "Mihai",
   age: 32
 };
 
 const personDetAgain = {
-  persNameReal: 'Mihai S.',
+  persNameReal: "Mihai S.",
   ageReal: 33
 };
 
 const { persName, age } = personDet;
-console.log(persName, 'is', age, 'years old!');
+console.log(persName, "is", age, "years old!");
 
 const { persNameReal: myRealName, ageReal: myRealA } = personDetAgain;
-console.log(myRealName, 'is', myRealA, 'years old!');
+console.log(myRealName, "is", myRealA, "years old!");
 
-console.log('Template literals');
+console.log("Template literals");
 
-const userFirstName = 'Mihai';
-const userLastName = 'Sitaru';
-const greeting = 'Hello, I\'m ' + userFirstName;
+const userFirstName = "Mihai";
+const userLastName = "Sitaru";
+const greeting = "Hello, I'm " + userFirstName;
 const greeting2 = `Hello 
 I\'m ${userFirstName}
 ${userLastName}.`;
 console.log(greeting);
 console.log(greeting2);
 
-console.log('%cSection 4 - exercises', 'color: rgb(152, 88, 22)');
+console.log("%cSection 4 - exercises", "color: rgb(152, 88, 22)");
 
 //1 - Arrow function
 const double = (value: number): number => value * 2;
 console.log(double(10));
 
 //2 - Default param
-const greet2 = function(name: string = 'Max'): void {
-  console.log('Hello ' + name);
+const greet2 = function(name: string = "Max"): void {
+  console.log("Hello " + name);
 };
 
 greet2();
-greet2('Anna');
+greet2("Anna");
 
 //3 - spread operator
 const nr = [-3, 33, 38, 5];
@@ -280,14 +280,17 @@ console.log(result1, result2, result3);
 
 //6 - destructuring object
 const scientist = {
-  firstName: 'Will',
+  firstName: "Will",
   experience: 12
 };
 
 const { firstName: scientistName, experience: exp } = scientist;
 console.log(scientistName, exp);
 
-console.log('%cSection 5 - Using classes to create objects', 'color: rgb(152, 88, 22)');
+console.log(
+  "%cSection 5 - Using classes to create objects",
+  "color: rgb(152, 88, 22)"
+);
 
 class Person {
   name: string;
@@ -299,19 +302,19 @@ class Person {
 
   printAge() {
     console.log(this.age);
-    this.setType('old person');
+    this.setType("old person");
   }
-  
+
   private setType(type: string) {
     this.type = type;
     console.log(this.type);
   }
 }
 
-const person = new Person('Mihai', 'mihai.sitaru');
+const person = new Person("Mihai", "mihai.sitaru");
 console.log(person);
 console.log(person.name, person.username);
-const {name: personName, username: user} = person;
+const { name: personName, username: user } = person;
 console.log(personName, user);
 person.printAge();
 
@@ -319,31 +322,31 @@ class Mihai extends Person {
   //name = 'Mihai';
 
   constructor(username: string) {
-    super('MihaiS', username);
+    super("MihaiS", username);
     this.age = 33;
   }
 }
 
-const mihai = new Mihai('mihaiSS');
+const mihai = new Mihai("mihaiSS");
 console.log(mihai);
 
 class Plant {
-  private _species: string = 'Default';
+  private _species: string = "Default";
 
   get species() {
     return this._species;
   }
 
   set species(value: string) {
-    this._species = value.length > 3 ? value: 'Default';
+    this._species = value.length > 3 ? value : "Default";
   }
 }
 
 const plant = new Plant();
 console.log(plant.species);
-plant.species = 'ABC';
+plant.species = "ABC";
 console.log(plant.species);
-plant.species = 'Wonderful Plant';
+plant.species = "Wonderful Plant";
 console.log(plant.species);
 
 class Helpers {
@@ -357,7 +360,7 @@ console.log(2 * Helpers.PI);
 console.log(Helpers.calcCircumference(21));
 
 abstract class Project {
-  projectName: string = 'Default';
+  projectName: string = "Default";
   budget: number = 1000;
 
   abstract changeName(name: string): void;
@@ -375,7 +378,7 @@ class ITProject extends Project {
 
 const newProject = new ITProject();
 console.log(newProject);
-newProject.changeName('Test project');
+newProject.changeName("Test project");
 console.log(newProject);
 
 class OnlyOne {
@@ -385,7 +388,7 @@ class OnlyOne {
 
   static getInstance() {
     if (!OnlyOne.instance) {
-      OnlyOne.instance = new OnlyOne('The Only One');
+      OnlyOne.instance = new OnlyOne("The Only One");
     }
     return OnlyOne.instance;
   }
@@ -411,15 +414,15 @@ class Car {
   }
 
   honk(): void {
-    console.log('Toooooot');
+    console.log("Toooooot");
   }
 
-  accelerate(speed: number):void {
+  accelerate(speed: number): void {
     this.acceleration = this.acceleration + speed;
   }
 }
 
-const car = new Car('BMW');
+const car = new Car("BMW");
 console.log(car.name);
 car.honk();
 console.log(car.acceleration);
@@ -429,11 +432,11 @@ console.log(car.acceleration);
 //2 - Inheritance
 
 class BaseObject {
-  width:number = 0;
-  length:number = 0;
+  width: number = 0;
+  length: number = 0;
 }
 
-class Rectangle extends BaseObject {  
+class Rectangle extends BaseObject {
   calcSize(): number {
     return this.width * this.length;
   }
@@ -447,20 +450,54 @@ console.log(rectangle.calcSize());
 // 3 - Getters and Setters
 
 class Pers {
-  private _firstName: string = '';
+  private _firstName: string = "";
 
   get firstName(): string {
     return this._firstName;
   }
 
   set firstName(value: string) {
-    this._firstName = value.length > 4 ? value : '';
+    this._firstName = value.length > 4 ? value : "";
   }
 }
 
 const newPers = new Pers();
 console.log(newPers);
-newPers.firstName = 'Maxi';
+newPers.firstName = "Maxi";
 console.log(newPers.firstName);
-newPers.firstName = 'Maximilian'
+newPers.firstName = "Maximilian";
 console.log(newPers.firstName);
+
+console.log("%cSection 6", "color: rgb(152, 88, 22)");
+
+console.log("Namespaces");
+// Using command tsc -outFile script.js rectangleMath.ts circleMath.ts script.ts
+
+//console.log(MyMath.calculateRectangle(10, 20));
+//console.log(MyMath.calculateCircumference(15));
+
+const PI = 3.1415;
+console.log(PI);
+
+// Using imports
+/*
+/// <reference path='rectangleMath.ts'/>
+/// <reference path='circleMath.ts'/>
+*/
+
+// import CircleMath = MyMath.Circle;
+
+// console.log(MyMath.calculateRectangle(10, 20));
+// console.log(CircleMath.calculateCircumference(15));
+
+// Namespaces disadvantages are related to keeping track of which file needs to be imported and in what order
+// Namespaces are more for small applications
+
+console.log("Modules");
+
+import * as Circle from "./math/circle";
+import calc from "./math/rectangle";
+
+console.log(Circle._PI);
+console.log(Circle.calculateCircumference(18));
+console.log(calc(5, 3));

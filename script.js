@@ -1,3 +1,4 @@
+"use strict";
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = function (d, b) {
         extendStatics = Object.setPrototypeOf ||
@@ -11,15 +12,26 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
+    result["default"] = mod;
+    return result;
+};
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 function Greeter(greeting) {
     this.greeting = greeting;
 }
 Greeter.prototype.greet = function () {
-    return 'Hello, ' + this.greeting;
+    return "Hello, " + this.greeting;
 };
-var greeter = new Greeter('world');
-var button = document.createElement('button');
-button.textContent = 'Say Hello';
+var greeter = new Greeter("world");
+var button = document.createElement("button");
+button.textContent = "Say Hello";
 button.onclick = function () {
     alert(greeter.greet());
 };
@@ -27,10 +39,10 @@ document.body.appendChild(button);
 var hasHobbies = false;
 var myRealAge;
 myRealAge = 32;
-var hobbies = ['Running', 'Reading'];
+var hobbies = ["Running", "Reading"];
 hobbies = [100];
 console.log(hobbies);
-var address = [52, 'FakeStreet'];
+var address = [52, "FakeStreet"];
 var Color;
 (function (Color) {
     Color[Color["Blue"] = 0] = "Blue";
@@ -41,16 +53,16 @@ var myColor = Color.Blue;
 var newColor = Color.Red + 1;
 console.log(myColor); //0
 console.log(newColor);
-var house = 'loft';
+var house = "loft";
 console.log(house);
-house = { type: 'appartment', rooms: 3 };
+house = { type: "appartment", rooms: 3 };
 console.log(house);
 function returnMyAge() {
     return myRealAge;
 }
 console.log(returnMyAge());
 function sayHi() {
-    console.log('Hi there!');
+    console.log("Hi there!");
     //return myRealAge;
 }
 function multiply(x, y) {
@@ -63,7 +75,7 @@ var newMultiply;
 newMultiply = multiply;
 console.log(newMultiply(5, 6));
 var userData = {
-    name: 'Mihai',
+    name: "Mihai",
     age: 32
 };
 console.log(userData);
@@ -76,17 +88,17 @@ var complexObj = {
 console.log(complexObj);
 // union types
 var myRealRealAge = 32;
-myRealRealAge = '33';
+myRealRealAge = "33";
 // myRealRealAge = true;
-var anotherVar = 'anything';
-if (typeof anotherVar == 'number') {
-    console.log('anotherVar is of type number');
+var anotherVar = "anything";
+if (typeof anotherVar == "number") {
+    console.log("anotherVar is of type number");
 }
 else {
-    console.log('anotherVar is not of type number, but of type: ', typeof anotherVar);
+    console.log("anotherVar is not of type number, but of type: ", typeof anotherVar);
 }
 function neverSayNever() {
-    throw new Error('Error!');
+    throw new Error("Error!");
 }
 var canBeNull = 12;
 canBeNull = null;
@@ -99,13 +111,13 @@ var bankAccount = {
     }
 };
 var myself = {
-    name: 'Mihai',
+    name: "Mihai",
     bankAccount: bankAccount,
-    hobbies: ['Running', 'Reading']
+    hobbies: ["Running", "Reading"]
 };
 myself.bankAccount.deposit(3000);
 console.log(myself);
-var myName = 'Mihai';
+var myName = "Mihai";
 var myAge = 32;
 //myName = 32;
 var anyVar;
@@ -119,7 +131,7 @@ function controlMe(isTrue) {
     return result;
 }
 console.log(controlMe(true));
-console.log('Arrow functions:');
+console.log("Arrow functions:");
 var addNumbers = function (number1, number2) {
     return number1 + number2;
 };
@@ -129,12 +141,12 @@ var multiplyNumbers = function (number1, number2) {
 };
 console.log(multiplyNumbers(8, 7));
 var great = function () {
-    console.log('Hello!');
+    console.log("Hello!");
 };
 great();
 var greatFriend = function (friend) { return console.log(friend); };
-greatFriend('Bogdan');
-console.log('Default params');
+greatFriend("Bogdan");
+console.log("Default params");
 var countDown = function (start, end) {
     if (start === void 0) { start = 10; }
     if (end === void 0) { end = start - 5; }
@@ -142,10 +154,10 @@ var countDown = function (start, end) {
     while (start > 0) {
         start--;
     }
-    console.log('Done!', start, end);
+    console.log("Done!", start, end);
 };
 countDown();
-console.log('Rest and Spread');
+console.log("Rest and Spread");
 var numbers = [3, 17, 86, -7, 7, 2];
 console.log(Math.max(3, 17, 86, -7, 7, 2));
 console.log(Math.max.apply(Math, numbers));
@@ -165,54 +177,54 @@ function createAnotherList(message) {
     console.log(message);
     return args;
 }
-console.log(createAnotherList('Hi!', 1, 3, 5));
+console.log(createAnotherList("Hi!", 1, 3, 5));
 function displayData(name, age) {
-    console.log('My name is ' + name + ' and I am ' + age + ' years old!');
+    console.log("My name is " + name + " and I am " + age + " years old!");
 }
-displayData('Mihai', 32);
+displayData("Mihai", 32);
 function displayDataAgain() {
     var data = [];
     for (var _i = 0; _i < arguments.length; _i++) {
         data[_i] = arguments[_i];
     }
-    console.log('My name is %c' + data[0] + '%c and I am ' + data[1] + ' years old!', 'font-weight: 900', 'font-weight: 300');
+    console.log("My name is %c" + data[0] + "%c and I am " + data[1] + " years old!", "font-weight: 900", "font-weight: 300");
 }
-displayDataAgain('Mihai', 32);
-console.log('%cDestructuring', 'color: #ff0000; font-weight: bolder');
-var myList = ['Run', 'Eat', 'Sleep'];
+displayDataAgain("Mihai", 32);
+console.log("%cDestructuring", "color: #ff0000; font-weight: bolder");
+var myList = ["Run", "Eat", "Sleep"];
 console.log(myList[0], myList[1], myList[2]);
 var item1 = myList[0], item2 = myList[1], item3 = myList[2];
 console.log(item1, item2, item3);
 var personDet = {
-    persName: 'Mihai',
+    persName: "Mihai",
     age: 32
 };
 var personDetAgain = {
-    persNameReal: 'Mihai S.',
+    persNameReal: "Mihai S.",
     ageReal: 33
 };
 var persName = personDet.persName, age = personDet.age;
-console.log(persName, 'is', age, 'years old!');
+console.log(persName, "is", age, "years old!");
 var myRealName = personDetAgain.persNameReal, myRealA = personDetAgain.ageReal;
-console.log(myRealName, 'is', myRealA, 'years old!');
-console.log('Template literals');
-var userFirstName = 'Mihai';
-var userLastName = 'Sitaru';
-var greeting = 'Hello, I\'m ' + userFirstName;
+console.log(myRealName, "is", myRealA, "years old!");
+console.log("Template literals");
+var userFirstName = "Mihai";
+var userLastName = "Sitaru";
+var greeting = "Hello, I'm " + userFirstName;
 var greeting2 = "Hello \nI'm " + userFirstName + "\n" + userLastName + ".";
 console.log(greeting);
 console.log(greeting2);
-console.log('%cSection 4 - exercises', 'color: rgb(152, 88, 22)');
+console.log("%cSection 4 - exercises", "color: rgb(152, 88, 22)");
 //1 - Arrow function
 var double = function (value) { return value * 2; };
 console.log(double(10));
 //2 - Default param
 var greet2 = function (name) {
-    if (name === void 0) { name = 'Max'; }
-    console.log('Hello ' + name);
+    if (name === void 0) { name = "Max"; }
+    console.log("Hello " + name);
 };
 greet2();
-greet2('Anna');
+greet2("Anna");
 //3 - spread operator
 var nr = [-3, 33, 38, 5];
 console.log(Math.min.apply(Math, nr));
@@ -226,12 +238,12 @@ var result1 = testResults[0], result2 = testResults[1], result3 = testResults[2]
 console.log(result1, result2, result3);
 //6 - destructuring object
 var scientist = {
-    firstName: 'Will',
+    firstName: "Will",
     experience: 12
 };
 var scientistName = scientist.firstName, exp = scientist.experience;
 console.log(scientistName, exp);
-console.log('%cSection 5 - Using classes to create objects', 'color: rgb(152, 88, 22)');
+console.log("%cSection 5 - Using classes to create objects", "color: rgb(152, 88, 22)");
 var Person = /** @class */ (function () {
     function Person(name, username) {
         this.username = username;
@@ -240,7 +252,7 @@ var Person = /** @class */ (function () {
     }
     Person.prototype.printAge = function () {
         console.log(this.age);
-        this.setType('old person');
+        this.setType("old person");
     };
     Person.prototype.setType = function (type) {
         this.type = type;
@@ -248,7 +260,7 @@ var Person = /** @class */ (function () {
     };
     return Person;
 }());
-var person = new Person('Mihai', 'mihai.sitaru');
+var person = new Person("Mihai", "mihai.sitaru");
 console.log(person);
 console.log(person.name, person.username);
 var personName = person.name, user = person.username;
@@ -258,24 +270,24 @@ var Mihai = /** @class */ (function (_super) {
     __extends(Mihai, _super);
     //name = 'Mihai';
     function Mihai(username) {
-        var _this = _super.call(this, 'MihaiS', username) || this;
+        var _this = _super.call(this, "MihaiS", username) || this;
         _this.age = 33;
         return _this;
     }
     return Mihai;
 }(Person));
-var mihai = new Mihai('mihaiSS');
+var mihai = new Mihai("mihaiSS");
 console.log(mihai);
 var Plant = /** @class */ (function () {
     function Plant() {
-        this._species = 'Default';
+        this._species = "Default";
     }
     Object.defineProperty(Plant.prototype, "species", {
         get: function () {
             return this._species;
         },
         set: function (value) {
-            this._species = value.length > 3 ? value : 'Default';
+            this._species = value.length > 3 ? value : "Default";
         },
         enumerable: true,
         configurable: true
@@ -284,9 +296,9 @@ var Plant = /** @class */ (function () {
 }());
 var plant = new Plant();
 console.log(plant.species);
-plant.species = 'ABC';
+plant.species = "ABC";
 console.log(plant.species);
-plant.species = 'Wonderful Plant';
+plant.species = "Wonderful Plant";
 console.log(plant.species);
 var Helpers = /** @class */ (function () {
     function Helpers() {
@@ -301,7 +313,7 @@ console.log(2 * Helpers.PI);
 console.log(Helpers.calcCircumference(21));
 var Project = /** @class */ (function () {
     function Project() {
-        this.projectName = 'Default';
+        this.projectName = "Default";
         this.budget = 1000;
     }
     Project.prototype.calcBudget = function () {
@@ -321,7 +333,7 @@ var ITProject = /** @class */ (function (_super) {
 }(Project));
 var newProject = new ITProject();
 console.log(newProject);
-newProject.changeName('Test project');
+newProject.changeName("Test project");
 console.log(newProject);
 var OnlyOne = /** @class */ (function () {
     function OnlyOne(name) {
@@ -329,7 +341,7 @@ var OnlyOne = /** @class */ (function () {
     }
     OnlyOne.getInstance = function () {
         if (!OnlyOne.instance) {
-            OnlyOne.instance = new OnlyOne('The Only One');
+            OnlyOne.instance = new OnlyOne("The Only One");
         }
         return OnlyOne.instance;
     };
@@ -349,14 +361,14 @@ var Car = /** @class */ (function () {
         this.name = name;
     }
     Car.prototype.honk = function () {
-        console.log('Toooooot');
+        console.log("Toooooot");
     };
     Car.prototype.accelerate = function (speed) {
         this.acceleration = this.acceleration + speed;
     };
     return Car;
 }());
-var car = new Car('BMW');
+var car = new Car("BMW");
 console.log(car.name);
 car.honk();
 console.log(car.acceleration);
@@ -387,14 +399,14 @@ console.log(rectangle.calcSize());
 // 3 - Getters and Setters
 var Pers = /** @class */ (function () {
     function Pers() {
-        this._firstName = '';
+        this._firstName = "";
     }
     Object.defineProperty(Pers.prototype, "firstName", {
         get: function () {
             return this._firstName;
         },
         set: function (value) {
-            this._firstName = value.length > 4 ? value : '';
+            this._firstName = value.length > 4 ? value : "";
         },
         enumerable: true,
         configurable: true
@@ -403,7 +415,30 @@ var Pers = /** @class */ (function () {
 }());
 var newPers = new Pers();
 console.log(newPers);
-newPers.firstName = 'Maxi';
+newPers.firstName = "Maxi";
 console.log(newPers.firstName);
-newPers.firstName = 'Maximilian';
+newPers.firstName = "Maximilian";
 console.log(newPers.firstName);
+console.log("%cSection 6", "color: rgb(152, 88, 22)");
+console.log("Namespaces");
+// Using command tsc -outFile script.js rectangleMath.ts circleMath.ts script.ts
+//console.log(MyMath.calculateRectangle(10, 20));
+//console.log(MyMath.calculateCircumference(15));
+var PI = 3.1415;
+console.log(PI);
+// Using imports
+/*
+/// <reference path='rectangleMath.ts'/>
+/// <reference path='circleMath.ts'/>
+*/
+// import CircleMath = MyMath.Circle;
+// console.log(MyMath.calculateRectangle(10, 20));
+// console.log(CircleMath.calculateCircumference(15));
+// Namespaces disadvantages are related to keeping track of which file needs to be imported and in what order
+// Namespaces are more for small applications
+console.log("Modules");
+var Circle = __importStar(require("./math/circle"));
+var rectangle_1 = __importDefault(require("./math/rectangle"));
+console.log(Circle._PI);
+console.log(Circle.calculateCircumference(18));
+console.log(rectangle_1.default(5, 3));
