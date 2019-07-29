@@ -6,7 +6,7 @@ Greeter.prototype.greet = function() {
   return "Hello, " + this.greeting;
 };
 
-let greeter = new Greeter("world");
+let greeter = new Greeter("world! Check the console for more details.");
 
 let button = document.createElement("button");
 button.textContent = "Say Hello";
@@ -501,3 +501,42 @@ import calc from "./math/rectangle";
 console.log(Circle._PI);
 console.log(Circle.calculateCircumference(18));
 console.log(calc(5, 3));
+
+console.log("%cSection 7", "color: rgb(152, 88, 22)");
+
+// Interfaces
+
+interface PersonDetails {
+  fName?: string; // the '?' says it's not a required property name
+  currentAge: number;
+  [propName: string]: any; //flexible property name
+}
+
+const persM = {
+  fName: "Mihai",
+  currentAge: 32,
+  hobby: 'Running'
+};
+
+function greet(person: PersonDetails): void {
+  console.log("Hello, " + person.fName);
+}
+
+function changeAge(person: PersonDetails): number {
+  console.log("Called with: " + person.currentAge);
+  return 33;
+}
+
+function logAge(person: PersonDetails): void {
+  console.log("The age is now: " + person.currentAge);
+}
+
+function logHobby(person: PersonDetails): void {
+  console.log('Person\'s hobby is: ' + person.hobby);
+}
+
+greet({fName: "Mihai", currentAge: 32});
+logAge(persM);
+persM.currentAge = changeAge(persM);
+logAge(persM);
+logHobby(persM);

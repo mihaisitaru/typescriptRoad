@@ -29,7 +29,7 @@ function Greeter(greeting) {
 Greeter.prototype.greet = function () {
     return "Hello, " + this.greeting;
 };
-var greeter = new Greeter("world");
+var greeter = new Greeter("world! Check the console for more details.");
 var button = document.createElement("button");
 button.textContent = "Say Hello";
 button.onclick = function () {
@@ -442,3 +442,27 @@ var rectangle_1 = __importDefault(require("./math/rectangle"));
 console.log(Circle._PI);
 console.log(Circle.calculateCircumference(18));
 console.log(rectangle_1.default(5, 3));
+console.log("%cSection 7", "color: rgb(152, 88, 22)");
+var persM = {
+    fName: "Mihai",
+    currentAge: 32,
+    hobby: 'Running'
+};
+function greet(person) {
+    console.log("Hello, " + person.fName);
+}
+function changeAge(person) {
+    console.log("Called with: " + person.currentAge);
+    return 33;
+}
+function logAge(person) {
+    console.log("The age is now: " + person.currentAge);
+}
+function logHobby(person) {
+    console.log('Person\'s hobby is: ' + person.hobby);
+}
+greet({ fName: "Mihai", currentAge: 32 });
+logAge(persM);
+persM.currentAge = changeAge(persM);
+logAge(persM);
+logHobby(persM);
