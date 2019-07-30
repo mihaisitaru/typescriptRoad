@@ -504,18 +504,23 @@ console.log(calc(5, 3));
 
 console.log("%cSection 7", "color: rgb(152, 88, 22)");
 
-// Interfaces
+// Interfaces - fun fact, they don't get compiled, 
+// they just exist to check your code during compilation for giving you errors
 
 interface PersonDetails {
   fName?: string; // the '?' says it's not a required property name
   currentAge: number;
   [propName: string]: any; //flexible property name
+  greet(lastName: string): void; 
 }
 
-const persM = {
+const persM: PersonDetails = {
   fName: "Mihai",
   currentAge: 32,
-  hobby: 'Running'
+  hobby: 'Running',
+  greet(lastName: string) {
+    console.log('Hi, I am ' + this.fName + ' ' + lastName);
+  }
 };
 
 function greet(person: PersonDetails): void {
@@ -535,8 +540,55 @@ function logHobby(person: PersonDetails): void {
   console.log('Person\'s hobby is: ' + person.hobby);
 }
 
-greet({fName: "Mihai", currentAge: 32});
+//greet({fName: "Mihai", currentAge: 32});
 logAge(persM);
 persM.currentAge = changeAge(persM);
 logAge(persM);
 logHobby(persM);
+persM.greet('Sitaru');
+
+class PersM implements PersonDetails {
+  fName: string;
+  lName: string;
+  currentAge: 32;
+  hobby: 'Reading';
+  greet(lastName: string): void {
+    console.log('Hi, I am ' + this.fName + ' ' + lastName);
+  };
+}
+
+const myPerson = new PersM();
+myPerson.fName = 'Mihai';
+myPerson.lName = 'SM';
+greet(myPerson);
+myPerson.greet('Sitarul');
+myPerson.greet(myPerson.lName);
+
+//Interfaces - Function types
+
+interface DoubleValueFunc {
+  (number1: number, number2: number): number; 
+}
+
+let myDoubleFunc: DoubleValueFunc;
+myDoubleFunc = function (value1: number, value2: number) {
+  return (value1 + value2) * 2;
+};
+
+console.log(myDoubleFunc(14, 2));
+
+//Interfaces - Inheritance
+
+interface AgedPerson extends PersonDetails {
+  fName: string; //now it is required, not optional anymore
+}
+
+const oldPerson: AgedPerson = {
+  fName: 'MS',
+  currentAge: 33,
+  greet(lName: string): void {
+    console.log('Hello ' + lName);
+  }
+};
+
+console.log(oldPerson);

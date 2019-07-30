@@ -446,7 +446,10 @@ console.log("%cSection 7", "color: rgb(152, 88, 22)");
 var persM = {
     fName: "Mihai",
     currentAge: 32,
-    hobby: 'Running'
+    hobby: 'Running',
+    greet: function (lastName) {
+        console.log('Hi, I am ' + this.fName + ' ' + lastName);
+    }
 };
 function greet(person) {
     console.log("Hello, " + person.fName);
@@ -461,8 +464,37 @@ function logAge(person) {
 function logHobby(person) {
     console.log('Person\'s hobby is: ' + person.hobby);
 }
-greet({ fName: "Mihai", currentAge: 32 });
+//greet({fName: "Mihai", currentAge: 32});
 logAge(persM);
 persM.currentAge = changeAge(persM);
 logAge(persM);
 logHobby(persM);
+persM.greet('Sitaru');
+var PersM = /** @class */ (function () {
+    function PersM() {
+    }
+    PersM.prototype.greet = function (lastName) {
+        console.log('Hi, I am ' + this.fName + ' ' + lastName);
+    };
+    ;
+    return PersM;
+}());
+var myPerson = new PersM();
+myPerson.fName = 'Mihai';
+myPerson.lName = 'SM';
+greet(myPerson);
+myPerson.greet('Sitarul');
+myPerson.greet(myPerson.lName);
+var myDoubleFunc;
+myDoubleFunc = function (value1, value2) {
+    return (value1 + value2) * 2;
+};
+console.log(myDoubleFunc(14, 2));
+var oldPerson = {
+    fName: 'MS',
+    currentAge: 33,
+    greet: function (lName) {
+        console.log('Hello ' + lName);
+    }
+};
+console.log(oldPerson);
