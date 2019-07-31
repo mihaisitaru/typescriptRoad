@@ -502,7 +502,7 @@ console.log(Circle._PI);
 console.log(Circle.calculateCircumference(18));
 console.log(calc(5, 3));
 
-console.log("%cSection 7", "color: rgb(152, 88, 22)");
+console.log("%cSection 7 - Interfaces", "color: rgb(152, 88, 22)");
 
 // Interfaces - fun fact, they don't get compiled, 
 // they just exist to check your code during compilation for giving you errors
@@ -592,3 +592,120 @@ const oldPerson: AgedPerson = {
 };
 
 console.log(oldPerson);
+
+console.log("%cSection 8 - Generics", "color: rgb(152, 88, 22)");
+
+// Simple Generic
+
+function echo(data: any): any {
+  return data;
+}
+
+console.log(echo({name: 'Mihai', age: 32}));
+console.log(echo(33));
+console.log(echo(33).length);
+console.log(echo('MMM').split(''));
+
+// Better Generic Way 
+//<M> - custom generic type - this makes a generic function
+
+function betterEcho<M>(data: M) {
+  return data;
+}
+
+console.log(betterEcho({name: 'Mihai', age: 32}));
+console.log(betterEcho(33));
+//console.log(betterEcho<number>('33'));
+//console.log(betterEcho(33).length);
+console.log(betterEcho('MMM').split(''));
+
+// Built-in Generics - e.g.: Array
+
+const testNewTestResults: Array<number> = [32, 33];
+testNewTestResults.push(86);
+//testNewTestResults.push('MS');
+console.warn(testNewTestResults);
+
+// Arrays
+
+function printAll<M>(args: M[]) {
+  args.forEach((element) => console.log(element));
+}
+
+printAll<string>(['Mihai', 'Sitaru']);
+
+// Generic Types
+
+// new const echo2, of generic type <M>, which holds a function,
+// and get's the args data of generic type M, this function returns the type (M), 
+// which becomes the function type of the echo function (actually generic type any in this case)
+const echo2: <M>(data: M) => M = echo; 
+console.log(echo2);
+console.log(echo2<string>('MS'));
+
+// Generic classes
+
+class SimpleMath<M, N extends number | string | boolean> { // constraining which types to be used with 'extends'
+  baseValue: M;
+  multiplyValue: N;
+  calculate(): number {
+    return +this.baseValue * +this.multiplyValue; // explicitly cast the values into a number with the + sign
+  }
+}
+
+const simpleMath = new SimpleMath<string, number>();
+//simpleMath.baseValue = 15;
+simpleMath.baseValue = '15';
+simpleMath.multiplyValue = 58;
+console.log(simpleMath.calculate());
+
+const simpleMathTwo = new SimpleMath<number, number>();
+simpleMathTwo.baseValue = 17;
+simpleMathTwo.multiplyValue = 60;
+console.log(simpleMathTwo.calculate());
+
+const simpleMathThree = new SimpleMath<number, boolean>();
+simpleMathThree.baseValue = 1;
+simpleMathThree.multiplyValue = false;
+console.log(simpleMathThree.calculate());
+
+console.log("%cSection 8 - Generics - Exercise", "color: rgb(152, 88, 22)");
+
+class Map<M> {
+  private map: {[key: string]: M} = {};
+  setItem(key: string, item: M) {
+    this.map[key] = item;
+  }
+
+  getItem(key: string) {
+    return this.map[key];
+  }
+
+  clear() {
+    this.map = {};    
+  }
+
+  printMap() {
+    for (let key in this.map) {
+      console.log(key, this.map[key]);
+    }
+  }
+}
+
+const numberMap = new Map<number>();
+numberMap.printMap();
+numberMap.setItem('apples', 5);
+numberMap.setItem('bananas', 10);
+console.log(numberMap.getItem('bananas'));
+numberMap.printMap();
+numberMap.clear();
+numberMap.printMap();
+
+const stringMap = new Map<string>();
+stringMap.printMap();
+stringMap.setItem('name', 'Mihai');
+stringMap.setItem('age', '32');
+console.log(stringMap.getItem('age'));
+stringMap.printMap();
+stringMap.clear();
+numberMap.printMap();

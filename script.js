@@ -442,7 +442,7 @@ var rectangle_1 = __importDefault(require("./math/rectangle"));
 console.log(Circle._PI);
 console.log(Circle.calculateCircumference(18));
 console.log(rectangle_1.default(5, 3));
-console.log("%cSection 7", "color: rgb(152, 88, 22)");
+console.log("%cSection 7 - Interfaces", "color: rgb(152, 88, 22)");
 var persM = {
     fName: "Mihai",
     currentAge: 32,
@@ -498,3 +498,98 @@ var oldPerson = {
     }
 };
 console.log(oldPerson);
+console.log("%cSection 8 - Generics", "color: rgb(152, 88, 22)");
+// Simple Generic
+function echo(data) {
+    return data;
+}
+console.log(echo({ name: 'Mihai', age: 32 }));
+console.log(echo(33));
+console.log(echo(33).length);
+console.log(echo('MMM').split(''));
+// Better Generic Way 
+//<M> - custom generic type - this makes a generic function
+function betterEcho(data) {
+    return data;
+}
+console.log(betterEcho({ name: 'Mihai', age: 32 }));
+console.log(betterEcho(33));
+//console.log(betterEcho<number>('33'));
+//console.log(betterEcho(33).length);
+console.log(betterEcho('MMM').split(''));
+// Built-in Generics - e.g.: Array
+var testNewTestResults = [32, 33];
+testNewTestResults.push(86);
+//testNewTestResults.push('MS');
+console.warn(testNewTestResults);
+// Arrays
+function printAll(args) {
+    args.forEach(function (element) { return console.log(element); });
+}
+printAll(['Mihai', 'Sitaru']);
+// Generic Types
+// new const echo2, of generic type <M>, which holds a function,
+// and get's the args data of generic type M, this function returns the type (M), 
+// which becomes the function type of the echo function (actually generic type any in this case)
+var echo2 = echo;
+console.log(echo2);
+console.log(echo2('MS'));
+// Generic classes
+var SimpleMath = /** @class */ (function () {
+    function SimpleMath() {
+    }
+    SimpleMath.prototype.calculate = function () {
+        return +this.baseValue * +this.multiplyValue; // explicitly cast the values into a number with the + sign
+    };
+    return SimpleMath;
+}());
+var simpleMath = new SimpleMath();
+//simpleMath.baseValue = 15;
+simpleMath.baseValue = '15';
+simpleMath.multiplyValue = 58;
+console.log(simpleMath.calculate());
+var simpleMathTwo = new SimpleMath();
+simpleMathTwo.baseValue = 17;
+simpleMathTwo.multiplyValue = 60;
+console.log(simpleMathTwo.calculate());
+var simpleMathThree = new SimpleMath();
+simpleMathThree.baseValue = 1;
+simpleMathThree.multiplyValue = false;
+console.log(simpleMathThree.calculate());
+console.log("%cSection 8 - Generics - Exercise", "color: rgb(152, 88, 22)");
+var Map = /** @class */ (function () {
+    function Map() {
+        this.map = {};
+    }
+    Map.prototype.setItem = function (key, item) {
+        this.map[key] = item;
+    };
+    Map.prototype.getItem = function (key) {
+        return this.map[key];
+    };
+    Map.prototype.clear = function () {
+        this.map = {};
+    };
+    Map.prototype.printMap = function () {
+        for (var key in this.map) {
+            console.log(key, this.map[key]);
+        }
+    };
+    return Map;
+}());
+var numberMap = new Map();
+numberMap.printMap();
+numberMap.setItem('apples', 5);
+numberMap.setItem('bananas', 10);
+console.log(numberMap.getItem('bananas'));
+numberMap.printMap();
+numberMap.clear();
+numberMap.printMap();
+var stringMap = new Map();
+stringMap.printMap();
+stringMap.setItem('name', 'Mihai');
+stringMap.setItem('age', '32');
+console.log(stringMap.getItem('age'));
+stringMap.printMap();
+stringMap.clear();
+numberMap.printMap();
