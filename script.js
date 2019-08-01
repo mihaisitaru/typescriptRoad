@@ -12,6 +12,15 @@ var __extends = (this && this.__extends) || (function () {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
 })();
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
@@ -593,3 +602,109 @@ console.log(stringMap.getItem('age'));
 stringMap.printMap();
 stringMap.clear();
 numberMap.printMap();
+console.log("%cSection 9 - Decorators", "color: rgb(152, 88, 22)");
+// Creating a Class Decorator
+function logged(constructorFn) {
+    console.log(constructorFn);
+}
+var Human = /** @class */ (function () {
+    function Human() {
+        console.log('Hi from Human');
+    }
+    Human = __decorate([
+        logged // appending the decorator function to the Human class
+    ], Human);
+    return Human;
+}());
+// Factory
+function logging(value) {
+    return value ? logged : null;
+}
+var Plane = /** @class */ (function () {
+    function Plane() {
+    }
+    Plane = __decorate([
+        logging(true) // attaching the logging result as a decorator to the Place class
+    ], Plane);
+    return Plane;
+}());
+// Advanced factory
+function printable(constructorFn) {
+    constructorFn.prototype.print = function () {
+        console.log(this);
+    };
+}
+var Flower = /** @class */ (function () {
+    function Flower() {
+        this.name = 'Green Plant';
+    }
+    Flower = __decorate([
+        logging(false),
+        printable
+    ], Flower);
+    return Flower;
+}());
+var flower = new Flower();
+flower.print();
+// Method Decorator
+// Property Decorator
+function editable(value) {
+    return function (target, propName, descriptor) {
+        descriptor.writable = value;
+    };
+}
+function overwrittable(value) {
+    return function (target, propName) {
+        var newdescr = {
+            writable: value
+        };
+        return newdescr;
+    };
+}
+var ProjectX = /** @class */ (function () {
+    function ProjectX(name) {
+        this.projectXName = name;
+    }
+    //@editable(false)
+    ProjectX.prototype.calcBudget = function () {
+        console.log('Too much money needed!');
+    };
+    __decorate([
+        overwrittable(true)
+    ], ProjectX.prototype, "projectXName", void 0);
+    __decorate([
+        editable
+    ], ProjectX.prototype, "calcBudget", null);
+    return ProjectX;
+}());
+var projectx = new ProjectX('Proj X');
+projectx.calcBudget();
+projectx.calcBudget = function () { return console.log('Money aquired!'); };
+projectx.calcBudget();
+console.log(projectx);
+// Parameter Decorator
+function printInfo(target, methodName, paramIndex) {
+    console.log('Target: ', target);
+    console.log('methodName: ', methodName);
+    console.log('paramIndex', paramIndex);
+}
+var Course = /** @class */ (function () {
+    function Course(name) {
+        this.name = name;
+    }
+    Course.prototype.printStudentNumbers = function (mode, printAll) {
+        if (printAll) {
+            console.log('A lot of students!');
+        }
+        else {
+            console.log(30);
+        }
+    };
+    __decorate([
+        __param(1, printInfo)
+    ], Course.prototype, "printStudentNumbers", null);
+    return Course;
+}());
+var course = new Course('Newest course');
+course.printStudentNumbers('HA!', true);
+course.printStudentNumbers('HA!', false);

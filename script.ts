@@ -709,3 +709,110 @@ console.log(stringMap.getItem('age'));
 stringMap.printMap();
 stringMap.clear();
 numberMap.printMap();
+
+console.log("%cSection 9 - Decorators", "color: rgb(152, 88, 22)");
+
+// Creating a Class Decorator
+
+function logged(constructorFn: Function) { //the constructorFn argument is mandatory for creating a function decorator
+  console.log(constructorFn);
+}
+
+@logged // appending the decorator function to the Human class
+class Human {
+  constructor() {
+    console.log('Hi from Human');
+  }
+}
+
+// Factory
+function logging(value: boolean) {
+  return value ? logged : null;
+}
+
+@logging(true) // attaching the logging result as a decorator to the Place class
+class Plane {
+  
+}
+
+// Advanced factory
+function printable(constructorFn: Function) {
+  constructorFn.prototype.print = function() {
+    console.log(this);
+  };
+}
+
+@logging(false)
+@printable
+class Flower {
+  name = 'Green Plant';
+}
+
+const flower = new Flower();
+(<any>flower).print();
+
+// Method Decorator
+// Property Decorator
+function editable(value: boolean) {
+  return function(target: any, propName: string, descriptor: PropertyDescriptor) {
+    descriptor.writable = value; 
+  }
+}
+
+function overwrittable(value: boolean) {
+  return function(target: any, propName: string): any {
+    const newdescr: PropertyDescriptor = {
+      writable: value
+    }; 
+    return newdescr;
+  }
+}
+
+class ProjectX {
+  //@overwrittable(false) // this will prevent any writting to the ProjectX in the firstplace
+  @overwrittable(true)
+  projectXName: string;
+
+  constructor(name: string) {
+    this.projectXName = name;
+  }
+
+  //@editable(false)
+  @editable
+  calcBudget() {
+    console.log('Too much money needed!');
+  }
+}
+
+const projectx = new ProjectX('Proj X');
+projectx.calcBudget();
+projectx.calcBudget = () => console.log('Money aquired!');
+projectx.calcBudget();
+console.log(projectx);
+
+// Parameter Decorator
+function printInfo(target: any, methodName: string, paramIndex: number) {
+  console.log('Target: ', target);
+  console.log('methodName: ', methodName);
+  console.log('paramIndex', paramIndex);
+}
+
+class Course {
+  name: string;
+
+  constructor(name: string) {
+    this.name = name;
+  }
+
+  printStudentNumbers(mode: string, @printInfo printAll: boolean) {
+    if (printAll) {
+      console.log('A lot of students!');
+    } else {
+      console.log(30);
+    }
+  }
+}
+
+const course = new Course('Newest course');
+course.printStudentNumbers('HA!', true);
+course.printStudentNumbers('HA!', false);
