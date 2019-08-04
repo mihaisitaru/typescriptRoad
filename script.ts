@@ -504,22 +504,22 @@ console.log(calc(5, 3));
 
 console.log("%cSection 7 - Interfaces", "color: rgb(152, 88, 22)");
 
-// Interfaces - fun fact, they don't get compiled, 
+// Interfaces - fun fact, they don't get compiled,
 // they just exist to check your code during compilation for giving you errors
 
 interface PersonDetails {
   fName?: string; // the '?' says it's not a required property name
   currentAge: number;
   [propName: string]: any; //flexible property name
-  greet(lastName: string): void; 
+  greet(lastName: string): void;
 }
 
 const persM: PersonDetails = {
   fName: "Mihai",
   currentAge: 32,
-  hobby: 'Running',
+  hobby: "Running",
   greet(lastName: string) {
-    console.log('Hi, I am ' + this.fName + ' ' + lastName);
+    console.log("Hi, I am " + this.fName + " " + lastName);
   }
 };
 
@@ -537,7 +537,7 @@ function logAge(person: PersonDetails): void {
 }
 
 function logHobby(person: PersonDetails): void {
-  console.log('Person\'s hobby is: ' + person.hobby);
+  console.log("Person's hobby is: " + person.hobby);
 }
 
 //greet({fName: "Mihai", currentAge: 32});
@@ -545,33 +545,33 @@ logAge(persM);
 persM.currentAge = changeAge(persM);
 logAge(persM);
 logHobby(persM);
-persM.greet('Sitaru');
+persM.greet("Sitaru");
 
 class PersM implements PersonDetails {
   fName: string;
   lName: string;
   currentAge: 32;
-  hobby: 'Reading';
+  hobby: "Reading";
   greet(lastName: string): void {
-    console.log('Hi, I am ' + this.fName + ' ' + lastName);
-  };
+    console.log("Hi, I am " + this.fName + " " + lastName);
+  }
 }
 
 const myPerson = new PersM();
-myPerson.fName = 'Mihai';
-myPerson.lName = 'SM';
+myPerson.fName = "Mihai";
+myPerson.lName = "SM";
 greet(myPerson);
-myPerson.greet('Sitarul');
+myPerson.greet("Sitarul");
 myPerson.greet(myPerson.lName);
 
 //Interfaces - Function types
 
 interface DoubleValueFunc {
-  (number1: number, number2: number): number; 
+  (number1: number, number2: number): number;
 }
 
 let myDoubleFunc: DoubleValueFunc;
-myDoubleFunc = function (value1: number, value2: number) {
+myDoubleFunc = function(value1: number, value2: number) {
   return (value1 + value2) * 2;
 };
 
@@ -584,10 +584,10 @@ interface AgedPerson extends PersonDetails {
 }
 
 const oldPerson: AgedPerson = {
-  fName: 'MS',
+  fName: "MS",
   currentAge: 33,
   greet(lName: string): void {
-    console.log('Hello ' + lName);
+    console.log("Hello " + lName);
   }
 };
 
@@ -601,23 +601,23 @@ function echo(data: any): any {
   return data;
 }
 
-console.log(echo({name: 'Mihai', age: 32}));
+console.log(echo({ name: "Mihai", age: 32 }));
 console.log(echo(33));
 console.log(echo(33).length);
-console.log(echo('MMM').split(''));
+console.log(echo("MMM").split(""));
 
-// Better Generic Way 
+// Better Generic Way
 //<M> - custom generic type - this makes a generic function
 
 function betterEcho<M>(data: M) {
   return data;
 }
 
-console.log(betterEcho({name: 'Mihai', age: 32}));
+console.log(betterEcho({ name: "Mihai", age: 32 }));
 console.log(betterEcho(33));
 //console.log(betterEcho<number>('33'));
 //console.log(betterEcho(33).length);
-console.log(betterEcho('MMM').split(''));
+console.log(betterEcho("MMM").split(""));
 
 // Built-in Generics - e.g.: Array
 
@@ -629,23 +629,24 @@ console.warn(testNewTestResults);
 // Arrays
 
 function printAll<M>(args: M[]) {
-  args.forEach((element) => console.log(element));
+  args.forEach(element => console.log(element));
 }
 
-printAll<string>(['Mihai', 'Sitaru']);
+printAll<string>(["Mihai", "Sitaru"]);
 
 // Generic Types
 
 // new const echo2, of generic type <M>, which holds a function,
-// and get's the args data of generic type M, this function returns the type (M), 
+// and get's the args data of generic type M, this function returns the type (M),
 // which becomes the function type of the echo function (actually generic type any in this case)
-const echo2: <M>(data: M) => M = echo; 
+const echo2: <M>(data: M) => M = echo;
 console.log(echo2);
-console.log(echo2<string>('MS'));
+console.log(echo2<string>("MS"));
 
 // Generic classes
 
-class SimpleMath<M, N extends number | string | boolean> { // constraining which types to be used with 'extends'
+class SimpleMath<M, N extends number | string | boolean> {
+  // constraining which types to be used with 'extends'
   baseValue: M;
   multiplyValue: N;
   calculate(): number {
@@ -655,7 +656,7 @@ class SimpleMath<M, N extends number | string | boolean> { // constraining which
 
 const simpleMath = new SimpleMath<string, number>();
 //simpleMath.baseValue = 15;
-simpleMath.baseValue = '15';
+simpleMath.baseValue = "15";
 simpleMath.multiplyValue = 58;
 console.log(simpleMath.calculate());
 
@@ -672,7 +673,7 @@ console.log(simpleMathThree.calculate());
 console.log("%cSection 8 - Generics - Exercise", "color: rgb(152, 88, 22)");
 
 class Map<M> {
-  private map: {[key: string]: M} = {};
+  private map: { [key: string]: M } = {};
   setItem(key: string, item: M) {
     this.map[key] = item;
   }
@@ -682,7 +683,7 @@ class Map<M> {
   }
 
   clear() {
-    this.map = {};    
+    this.map = {};
   }
 
   printMap() {
@@ -694,18 +695,18 @@ class Map<M> {
 
 const numberMap = new Map<number>();
 numberMap.printMap();
-numberMap.setItem('apples', 5);
-numberMap.setItem('bananas', 10);
-console.log(numberMap.getItem('bananas'));
+numberMap.setItem("apples", 5);
+numberMap.setItem("bananas", 10);
+console.log(numberMap.getItem("bananas"));
 numberMap.printMap();
 numberMap.clear();
 numberMap.printMap();
 
 const stringMap = new Map<string>();
 stringMap.printMap();
-stringMap.setItem('name', 'Mihai');
-stringMap.setItem('age', '32');
-console.log(stringMap.getItem('age'));
+stringMap.setItem("name", "Mihai");
+stringMap.setItem("age", "32");
+console.log(stringMap.getItem("age"));
 stringMap.printMap();
 stringMap.clear();
 numberMap.printMap();
@@ -714,14 +715,15 @@ console.log("%cSection 9 - Decorators", "color: rgb(152, 88, 22)");
 
 // Creating a Class Decorator
 
-function logged(constructorFn: Function) { //the constructorFn argument is mandatory for creating a function decorator
+function logged(constructorFn: Function) {
+  //the constructorFn argument is mandatory for creating a function decorator
   console.log(constructorFn);
 }
 
 @logged // appending the decorator function to the Human class
 class Human {
   constructor() {
-    console.log('Hi from Human');
+    console.log("Hi from Human");
   }
 }
 
@@ -731,9 +733,7 @@ function logging(value: boolean) {
 }
 
 @logging(true) // attaching the logging result as a decorator to the Place class
-class Plane {
-  
-}
+class Plane {}
 
 // Advanced factory
 function printable(constructorFn: Function) {
@@ -745,7 +745,7 @@ function printable(constructorFn: Function) {
 @logging(false)
 @printable
 class Flower {
-  name = 'Green Plant';
+  name = "Green Plant";
 }
 
 const flower = new Flower();
@@ -754,18 +754,22 @@ const flower = new Flower();
 // Method Decorator
 // Property Decorator
 function editable(value: boolean) {
-  return function(target: any, propName: string, descriptor: PropertyDescriptor) {
-    descriptor.writable = value; 
-  }
+  return function(
+    target: any,
+    propName: string,
+    descriptor: PropertyDescriptor
+  ) {
+    descriptor.writable = value;
+  };
 }
 
 function overwrittable(value: boolean) {
   return function(target: any, propName: string): any {
     const newdescr: PropertyDescriptor = {
       writable: value
-    }; 
+    };
     return newdescr;
-  }
+  };
 }
 
 class ProjectX {
@@ -780,21 +784,21 @@ class ProjectX {
   //@editable(false)
   @editable
   calcBudget() {
-    console.log('Too much money needed!');
+    console.log("Too much money needed!");
   }
 }
 
-const projectx = new ProjectX('Proj X');
+const projectx = new ProjectX("Proj X");
 projectx.calcBudget();
-projectx.calcBudget = () => console.log('Money aquired!');
+projectx.calcBudget = () => console.log("Money aquired!");
 projectx.calcBudget();
 console.log(projectx);
 
 // Parameter Decorator
 function printInfo(target: any, methodName: string, paramIndex: number) {
-  console.log('Target: ', target);
-  console.log('methodName: ', methodName);
-  console.log('paramIndex', paramIndex);
+  console.log("Target: ", target);
+  console.log("methodName: ", methodName);
+  console.log("paramIndex", paramIndex);
 }
 
 class Course {
@@ -806,13 +810,24 @@ class Course {
 
   printStudentNumbers(mode: string, @printInfo printAll: boolean) {
     if (printAll) {
-      console.log('A lot of students!');
+      console.log("A lot of students!");
     } else {
       console.log(30);
     }
   }
 }
 
-const course = new Course('Newest course');
-course.printStudentNumbers('HA!', true);
-course.printStudentNumbers('HA!', false);
+const course = new Course("Newest course");
+course.printStudentNumbers("HA!", true);
+course.printStudentNumbers("HA!", false);
+
+console.log(
+  "%cSection 10 - Typescript and Third-Party Libraries",
+  "color: rgb(152, 88, 22)"
+);
+console.log("%cSection 11 - Typescript Workflows", "color: rgb(152, 88, 22)");
+console.log("%cSection 10 & 11 - github: ", "color: rgb(152, 88, 22)");
+console.warn(
+  "%chttps://github.com/mihaisitaru/Typescript-and-Third-Party-Libraries",
+  "color: rgb(152, 88, 22)"
+);
